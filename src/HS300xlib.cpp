@@ -1,6 +1,7 @@
 #include "HS300xlib.h"
 
 uint8 HS300xlib::MeasurementReq(){
+     uint8 _status;
     do
     {
         Wire.beginTransmission(HS300X_ADR);
@@ -9,9 +10,12 @@ uint8 HS300xlib::MeasurementReq(){
         }
         if (_iteration>HS300X_MAX_ITERATION) return HS300X_ERROR_SENSOR_BUSY;
         _iteration++;
-    } while (!_readSensor());
+        //delayMicroseconds(50);
+        delay(10);
+       _status= _readSensor();
+    } while (!_status);
     _iteration=0;
-    return HS300X_OK;
+    return _status;
 }
 uint8_t HS300xlib::_readSensor(){
     uint16_t _rawTempMSB;
@@ -35,12 +39,15 @@ uint8_t HS300xlib::_readSensor(){
     _rawStatus = _rawTemp>>14;
     _rawHum = _rawHum& 0x3FFF; // mask 2 bit first
     _rawTemp = _rawTemp>>2;     // mask 2 bit last  
+    if (_rawHum== 0x3FFF) return 0;
+    if (_rawTemp== 0x3FFF) return 0;
     _temperature = (_rawTemp* HS300X_TEMP_MULTY) - HS300X_TEMP_MIN;
     _humidity = _rawHum * HS300X_HUMD_MULTY;
     return _rawStatus+1;
 }
 
 float HS300xlib::getHumidity(){
+
     _iteration=0;
     return _humidity;
 }
