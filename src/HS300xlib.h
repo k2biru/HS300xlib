@@ -5,6 +5,9 @@
  *  Wednesday Legi [2019.08.14]
  *  board ESP8266
 */
+#ifndef DEF_HS300X_H
+#define DEF_HS300X_H
+
 #define HS300X_ADR  0x44
 #define HS300X_TEMP_MULTY  0.010071415
 #define HS300X_TEMP_MIN  40
@@ -34,3 +37,5 @@ class HS300xlib {
     float getTemperatureC();
     float getHumidity();
 };
+
+#endif //DEF_HS300X_H
