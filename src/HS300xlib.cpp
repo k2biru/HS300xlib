@@ -24,7 +24,7 @@ uint8_t HS300xlib::_readSensor(){
     uint16_t _rawHum;
     uint8_t  _rawStatus;
   
-    Wire.requestFrom(HS300X_ADR, 4, true);        //true, stop message after transmission & releas the I2C bus
+    Wire.requestFrom(HS300X_ADR, 4, 1);        //true, stop message after transmission & releas the I2C bus
     if (Wire.available() != 4) {
         return 0;   
         }
