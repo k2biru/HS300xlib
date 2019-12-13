@@ -1,5 +1,5 @@
 # HS300x
-Arduino ESP8266 Libray for HS300x ( HS3004 HS3002 ) Relative Humidity and Temperature Sensor
+Arduino ESP8266 Libray for HS300x ( HS3004 HS3003 HS3002 HS3001 ) Relative Humidity and Temperature Sensor
 
 ## Info
 * This library using Standard Arduino Wire library (See Example)
