@@ -22,12 +22,12 @@ void loop(){
 
   uint32_t now = millis();
 	if (now - CounterTemperature > UPDATE_TIME) {
-    uint8 respon = hs300x.MeasurementReq();
+    uint8_t respon = hs300x.MeasurementReq();
     if(respon){
         CounterTemperature = now;
         //Serial.print("status ="); Serial.println(respon);  // respon to see Sensor condition
         Serial.print("Humidity ");Serial.print(hs300x.getHumidity());
-        Serial.print("Temperature ");Serial.println(hs300x.getTemperatureC());
+        Serial.print("\tTemperature ");Serial.println(hs300x.getTemperatureC());
     }
   }
 }
