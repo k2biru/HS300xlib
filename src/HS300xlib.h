@@ -33,7 +33,7 @@ class HS300xlib {
 
 
     public:
-    uint8 MeasurementReq();
+    uint8_t MeasurementReq();
     float getTemperatureC();
     float getHumidity();
 };
