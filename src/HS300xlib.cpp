@@ -1,7 +1,7 @@
 #include "HS300xlib.h"
 
-uint8_t HS300xlib::MeasurementReq(){
-     uint8_t _status;
+int8_t HS300xlib::MeasurementReq(){
+     int8_t _status;
     do
     {
         Wire.beginTransmission(HS300X_ADR);
