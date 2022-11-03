@@ -35,7 +35,7 @@ uint8_t HS300xlib::_readSensor(){
     _rawHum |= _rawHumMSB;
     _rawTemp |= _rawTempMSB;
   
-    _rawStatus = _rawTemp >> 14;
+    _rawStatus = _rawHum >> 14;
     _rawHum = _rawHum & 0x3FFF; // mask 2 bit first
     _rawTemp = _rawTemp >>2;     // mask 2 bit last  
     if (_rawHum == 0x3FFF) return 0;
